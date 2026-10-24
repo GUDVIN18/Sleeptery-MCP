@@ -27,6 +27,6 @@ if __name__ == "__main__":
     log.info("Запускаем MCP сервер")
     server.run(
         transport="streamable-http",
-        host="localhost",
+        host="0.0.0.0",
         port=8800,
     )

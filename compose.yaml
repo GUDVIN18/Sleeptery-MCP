@@ -1,0 +1,15 @@
+services:
+  mcp:
+    build: .
+    ports:
+      - "127.0.0.1:8800:8800"
+    env_file:
+      - .env
+    environment:
+      MCP_HOST: 0.0.0.0
+    volumes:
+      - mcp_logs:/app/app/logs
+    restart: always
+
+volumes:
+  mcp_logs:
