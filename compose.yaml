@@ -2,7 +2,7 @@ services:
   mcp:
     build: .
     ports:
-      - "127.0.0.1:8800:8800"
+      - "0.0.0.0:8800:8800"
     env_file:
       - .env
     environment:
