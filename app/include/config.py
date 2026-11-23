@@ -11,9 +11,14 @@ class Config(BaseSettings):
     ST_DIARY_URL: str = Field(validation_alias='ST_DIARY_URL')
     ST_ACCOUNT_MANAGER_URL: str = Field(validation_alias='ST_ACCOUNT_MANAGER_URL')
 
-    QWEN_API_KEY: str = Field(None, validation_alias='QWEN_API_KEY')
-    MODEL_SLEEP_AI: str = Field(None, validation_alias='MODEL_SLEEP_AI')
-    MCP_URL: str = Field(None, validation_alias='MCP_URL')
+    QWEN_API_KEY: str | None = Field(None, validation_alias='QWEN_API_KEY')
+    MODEL_SLEEP_AI: str | None = Field(None, validation_alias='MODEL_SLEEP_AI')
+    MCP_URL: str | None = Field(None, validation_alias='MCP_URL')
+    DB_AI_URL: str | None = Field(
+        None,
+        description="URL PostgreSQL для инструментов ИИ",
+        validation_alias='DB_AI_URL',
+    )
 
     model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-8', extra='ignore')
 
