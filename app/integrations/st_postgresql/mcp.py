@@ -22,7 +22,7 @@ class StPostgreSQLMCP:
     def _register_tools(self):
         log.info(f"Начали собирать {self.__class__.__name__} tools")
 
-        @self.server.tool(parse_docstring=True)
+        @self.server.tool()
         async def get_db_sleeptery():
             """
                 Получить список доступных баз sleeptery для будущего
@@ -32,7 +32,7 @@ class StPostgreSQLMCP:
             return await get_database()
 
 
-        @self.server.tool(parse_docstring=True)
+        @self.server.tool()
         async def get_tables_db(database_name: str):
             """
                 Получить имена таблиц в выбранной базе.
@@ -45,7 +45,7 @@ class StPostgreSQLMCP:
             )
 
 
-        @self.server.tool(parse_docstring=True)
+        @self.server.tool()
         async def get_columns_db(
             database_name: str, 
             table_name: str
@@ -62,7 +62,7 @@ class StPostgreSQLMCP:
             )
 
 
-        @self.server.tool(parse_docstring=True)
+        @self.server.tool()
         async def execute_query_db(
             database_name: str,
             query: str,

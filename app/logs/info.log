@@ -21328,3 +21328,341 @@ mcp.server.mcpserver.exceptions.UnexpectedToolError: Error executing tool user_d
 2026-10-23 01:44:33.021 | DEBUG | close.started
 2026-10-23 01:44:33.022 | DEBUG | close.complete
 2026-10-24 16:16:48.881 | INFO | StreamableHTTP session manager shutting down
+2026-11-23 17:56:47.804 | DEBUG | Initializing server 'Sleeptery AI MCP server'
+2026-11-23 17:56:47.812 | INFO | Начали собирать StSleepMCP tools
+2026-11-23 17:56:47.829 | INFO | Начали собирать StSleepMCP prompts
+2026-11-23 17:56:47.830 | INFO | Начали собирать StDiaryMCP tools
+2026-11-23 17:56:47.858 | INFO | Начали собирать StDiaryMCP prompts
+2026-11-23 17:56:47.988 | INFO | Начали собирать StPostgreSQLMCP tools
+2026-11-23 17:57:18.000 | DEBUG | Initializing server 'Sleeptery AI MCP server'
+2026-11-23 17:57:18.011 | INFO | Начали собирать StSleepMCP tools
+2026-11-23 17:57:18.021 | INFO | Начали собирать StSleepMCP prompts
+2026-11-23 17:57:18.022 | INFO | Начали собирать StDiaryMCP tools
+2026-11-23 17:57:18.025 | INFO | Начали собирать StDiaryMCP prompts
+2026-11-23 17:57:18.025 | INFO | Начали собирать StPostgreSQLMCP tools
+2026-11-23 17:57:18.027 | INFO | Начали собирать StPostgreSQLMCP prompts
+2026-11-23 17:57:33.751 | DEBUG | Initializing server 'Sleeptery AI MCP server'
+2026-11-23 17:57:33.757 | INFO | Начали собирать StSleepMCP tools
+2026-11-23 17:57:33.764 | INFO | Начали собирать StSleepMCP prompts
+2026-11-23 17:57:33.764 | INFO | Начали собирать StDiaryMCP tools
+2026-11-23 17:57:33.767 | INFO | Начали собирать StDiaryMCP prompts
+2026-11-23 17:57:33.767 | INFO | Начали собирать StPostgreSQLMCP tools
+2026-11-23 17:57:33.769 | INFO | Начали собирать StPostgreSQLMCP prompts
+2026-11-23 17:57:33.778 | DEBUG | Using selector: KqueueSelector
+2026-11-23 17:57:33.805 | DEBUG | no handler for notification notifications/initialized
+2026-11-23 17:57:33.922 | DEBUG | Listing resources
+2026-11-23 17:57:33.938 | DEBUG | Listing templates
+2026-11-23 17:57:53.815 | DEBUG | Listing resources
+2026-11-23 17:58:03.150 | ERROR | Tool 'get_db_sleeptery' raised an unexpected exception
+Traceback (most recent call last):
+
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/server/mcpserver/tools/base.py", line 179, in run
+    result = await self.fn_metadata.call_fn(self.fn, self.is_async, validated, pass_directly)
+                   │    │           │       │    │   │    │         │          └ {}
+                   │    │           │       │    │   │    │         └ {}
+                   │    │           │       │    │   │    └ True
+                   │    │           │       │    │   └ Tool(fn=<function StPostgreSQLMCP._register_tools.<locals>.get_db_sleeptery at 0x10df82b60>, name='get_db_sleeptery', title=N...
+                   │    │           │       │    └ <function StPostgreSQLMCP._register_tools.<locals>.get_db_sleeptery at 0x10df82b60>
+                   │    │           │       └ Tool(fn=<function StPostgreSQLMCP._register_tools.<locals>.get_db_sleeptery at 0x10df82b60>, name='get_db_sleeptery', title=N...
+                   │    │           └ <function FuncMetadata.call_fn at 0x10c0172e0>
+                   │    └ FuncMetadata(arg_model=<class 'mcp.server.mcpserver.utilities.func_metadata.get_db_sleepteryArguments'>, output_schema=None, ...
+                   └ Tool(fn=<function StPostgreSQLMCP._register_tools.<locals>.get_db_sleeptery at 0x10df82b60>, name='get_db_sleeptery', title=N...
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/server/mcpserver/utilities/func_metadata.py", line 163, in call_fn
+    return await fn(**kwargs)
+                 │    └ {}
+                 └ <function StPostgreSQLMCP._register_tools.<locals>.get_db_sleeptery at 0x10df82b60>
+
+  File "/Applications/xdev/mcp/app/integrations/st_postgresql/mcp.py", line 32, in get_db_sleeptery
+    return await get_database()
+                 └ <function get_database at 0x10d55a520>
+
+  File "/Applications/xdev/mcp/app/integrations/st_postgresql/tools.py", line 8, in get_database
+    async with DBConnPool().isolated_connection(
+               └ <class 'st_bases.db.pool.DBConnPool'>
+
+  File "/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+                       │    └ <async_generator object DBConnPool.isolated_connection at 0x10dfd3cd0>
+                       └ <contextlib._AsyncGeneratorContextManager object at 0x10d50fc20>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/st_bases/db/pool.py", line 59, in isolated_connection
+    async with Database(
+               └ <class 'databases.core.Database'>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/databases/core.py", line 157, in __aenter__
+    await self.connect()
+          │    └ <function Database.connect at 0x10dc97c40>
+          └ <databases.core.Database object at 0x10d9752b0>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/databases/core.py", line 112, in connect
+    await self._backend.connect()
+          │    │        └ <function PostgresBackend.connect at 0x10e121b20>
+          │    └ <databases.backends.postgres.PostgresBackend object at 0x10dfb6a50>
+          └ <databases.core.Database object at 0x10d9752b0>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/databases/backends/postgres.py", line 74, in connect
+    self._pool = await asyncpg.create_pool(**kwargs)
+    │    │             │       │             └ {'host': '127.0.0.1', 'port': 15432, 'user': 'readonly_user', 'password': 'unGaCildzIApZUv7', 'database': 'st_sleep', 'min_si...
+    │    │             │       └ <function create_pool at 0x10d55a5c0>
+    │    │             └ <module 'asyncpg' from '/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/__init__.py'>
+    │    └ None
+    └ <databases.backends.postgres.PostgresBackend object at 0x10dfb6a50>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/pool.py", line 409, in _async__init__
+    await self._initialize()
+          │    └ <function Pool._initialize at 0x10d58c7c0>
+          └ <asyncpg.pool.Pool object at 0x10e125b10>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/pool.py", line 437, in _initialize
+    await first_ch.connect()
+          │        └ <function PoolConnectionHolder.connect at 0x10d55bf60>
+          └ <asyncpg.pool.PoolConnectionHolder object at 0x10e052bc0>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/pool.py", line 129, in connect
+    self._con = await self._pool._get_new_connection()
+    │    │            │    └ <member '_pool' of 'PoolConnectionHolder' objects>
+    │    │            └ <asyncpg.pool.PoolConnectionHolder object at 0x10e052bc0>
+    │    └ <member '_con' of 'PoolConnectionHolder' objects>
+    └ <asyncpg.pool.PoolConnectionHolder object at 0x10e052bc0>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/pool.py", line 514, in _get_new_connection
+    con = await connection.connect(
+                │          └ <function connect at 0x10c9659e0>
+                └ <module 'asyncpg.connection' from '/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/connection.py'>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/connection.py", line 2114, in connect
+    return await connect_utils._connect(
+                 │             └ <function _connect at 0x10d511da0>
+                 └ <module 'asyncpg.connect_utils' from '/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/connect_utils.py'>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/connect_utils.py", line 1011, in _connect
+    raise last_error or exceptions.TargetServerAttributeNotMatched(
+          │             │          └ <class 'asyncpg.exceptions._base.TargetServerAttributeNotMatched'>
+          │             └ <module 'asyncpg.exceptions' from '/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/exceptions/__init__.py'>
+          └ ConnectionRefusedError(61, "Connect call failed ('127.0.0.1', 15432)")
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/connect_utils.py", line 982, in _connect
+    conn = await _connect_addr(
+                 └ <function _connect_addr at 0x10d5114e0>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/connect_utils.py", line 808, in _connect_addr
+    return await __connect_addr(params, timeout, True, *args)
+                 │              │       │               └ (('127.0.0.1', 15432), <_UnixSelectorEventLoop running=True closed=False debug=False>, ConnectionConfiguration(command_timeou...
+                 │              │       └ 60
+                 │              └ ConnectionParameters(user='readonly_user', password='unGaCildzIApZUv7', database='st_sleep', ssl=<ssl.SSLContext object at 0x...
+                 └ <function __connect_addr at 0x10d511760>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/connect_utils.py", line 860, in __connect_addr
+    tr, pr = await compat.wait_for(connector, timeout=timeout)
+                   │      │        │                  └ 60
+                   │      │        └ <Task finished name='Task-2' coro=<_create_ssl_connection() done, defined at /Applications/xdev/mcp/.venv/lib/python3.12/site...
+                   │      └ <function wait_for at 0x10c9665c0>
+                   └ <module 'asyncpg.compat' from '/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/compat.py'>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/compat.py", line 60, in wait_for
+    return await asyncio.wait_for(fut, timeout)
+                 │       │        │    └ 60
+                 │       │        └ <Task finished name='Task-2' coro=<_create_ssl_connection() done, defined at /Applications/xdev/mcp/.venv/lib/python3.12/site...
+                 │       └ <function wait_for at 0x10ba98c20>
+                 └ <module 'asyncio' from '/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/asyncio/...
+  File "/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+                 └ <Task finished name='Task-2' coro=<_create_ssl_connection() done, defined at /Applications/xdev/mcp/.venv/lib/python3.12/site...
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/asyncpg/connect_utils.py", line 719, in _create_ssl_connection
+    tr, pr = await loop.create_connection(
+                   │    └ <function BaseEventLoop.create_connection at 0x10baa1620>
+                   └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/asyncio/base_events.py", line 1127, in create_connection
+    raise exceptions[0]
+          └ None
+  File "/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/asyncio/base_events.py", line 1102, in create_connection
+    sock = await self._connect_sock(
+                 │    └ <function BaseEventLoop._connect_sock at 0x10baa1580>
+                 └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/asyncio/base_events.py", line 1005, in _connect_sock
+    await self.sock_connect(sock, address)
+          │    │            │     └ ('127.0.0.1', 15432)
+          │    │            └ <socket.socket [closed] fd=-1, family=2, type=1, proto=6>
+          │    └ <function BaseSelectorEventLoop.sock_connect at 0x10baf40e0>
+          └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/asyncio/selector_events.py", line 651, in sock_connect
+    return await fut
+                 └ None
+  File "/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/asyncio/selector_events.py", line 691, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+                  │                           └ ('127.0.0.1', 15432)
+                  └ 61
+
+ConnectionRefusedError: [Errno 61] Connect call failed ('127.0.0.1', 15432)
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/Applications/xdev/mcp/.venv/bin/mcp", line 10, in <module>
+    sys.exit(app())
+    │   │    └ <typer.main.Typer object at 0x10bed3620>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/typer/main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x10bed3620>
+           └ <function get_command at 0x10c4618a0>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/typer/_click/core.py", line 802, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x10c461300>
+           └ <TyperGroup mcp>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/typer/core.py", line 1197, in main
+    return _main(
+           └ <function _main at 0x10c3d7420>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/typer/core.py", line 187, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x1048e7f80>
+         │    └ <function TyperGroup.invoke at 0x10c460ea0>
+         └ <TyperGroup mcp>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/typer/core.py", line 1119, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x10c07c530>
+           │               │       │       └ <function Command.invoke at 0x10c3c65c0>
+           │               │       └ <TyperCommand run>
+           │               └ <typer._click.core.Context object at 0x10c07c530>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x10c43de40>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/typer/_click/core.py", line 741, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'file_spec': 'server.py', 'transport': None}
+           │   │      │    │           └ <typer._click.core.Context object at 0x10c07c530>
+           │   │      │    └ <function run at 0x10c43d800>
+           │   │      └ <TyperCommand run>
+           │   └ <function Context.invoke at 0x10c3c5940>
+           └ <typer._click.core.Context object at 0x10c07c530>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/typer/_click/core.py", line 483, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'file_spec': 'server.py', 'transport': None}
+           │         └ ()
+           └ <function run at 0x10c43d800>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/typer/main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'file_spec': 'server.py', 'transport': None}
+           └ <function run at 0x10c43d9e0>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/cli/cli.py", line 348, in run
+    server.run(**kwargs)
+    │      │     └ {}
+    │      └ <function MCPServer.run at 0x10c27e700>
+    └ <mcp.server.mcpserver.server.MCPServer object at 0x10c4322d0>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/server/mcpserver/server.py", line 421, in run
+    anyio.run(self.run_stdio_async)
+    │     │   │    └ <function MCPServer.run_stdio_async at 0x10c27f600>
+    │     │   └ <mcp.server.mcpserver.server.MCPServer object at 0x10c4322d0>
+    │     └ <function run at 0x10b875940>
+    └ <module 'anyio' from '/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/anyio/__init__.py'>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/anyio/_core/_eventloop.py", line 83, in run
+    return async_backend.run(func, args, {}, backend_options)
+           │             │   │     │         └ {}
+           │             │   │     └ ()
+           │             │   └ <bound method MCPServer.run_stdio_async of <mcp.server.mcpserver.server.MCPServer object at 0x10c4322d0>>
+           │             └ <classmethod(<function AsyncIOBackend.run at 0x10e0223e0>)>
+           └ <class 'anyio._backends._asyncio.AsyncIOBackend'>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2548, in run
+    return runner.run(wrapper())
+           │      │   └ <function MCPServer.run_stdio_async at 0x10c43e0c0>
+           │      └ <function Runner.run at 0x10baa2ca0>
+           └ <asyncio.runners.Runner object at 0x10d4bb6e0>
+  File "/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='mcp.server.mcpserver.server.MCPServer.run_stdio_async' coro=<MCPServer.run_stdio_async() running at /Appl...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x10baa0720>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x10d4bb6e0>
+  File "/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/asyncio/base_events.py", line 673, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x10baa0680>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/asyncio/base_events.py", line 640, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x10baa2480>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/asyncio/base_events.py", line 1992, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x10ba35760>
+    └ <Handle Task.task_wakeup(<Task finishe....1', 15432)")>)>
+  File "/Users/dmitrijananev/.local/share/uv/python/cpython-3.12.8-macos-aarch64-none/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Task finishe....1', 15432)")>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Task finishe....1', 15432)")>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Task finishe....1', 15432)")>)>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/anyio/_core/_tasks.py", line 327, in _run_coro
+    retval = await self._coro
+                   │    └ <member '_coro' of 'TaskHandle' objects>
+                   └ <TaskHandle pending name='mcp.shared.jsonrpc_dispatcher.JSONRPCDispatcher._spawn.<locals>.run' coro=<coroutine object JSONRPC...
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/shared/jsonrpc_dispatcher.py", line 702, in run
+    await fn(*args)
+          │   └ (JSONRPCRequest(jsonrpc='2.0', id=8, method='tools/call', params={'name': 'get_db_sleeptery', 'arguments': {}, '_meta': {'pro...
+          └ <bound method JSONRPCDispatcher._handle_request of <mcp.shared.jsonrpc_dispatcher.JSONRPCDispatcher object at 0x10df6c320>>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/shared/jsonrpc_dispatcher.py", line 740, in _handle_request
+    result = await on_request(dctx, req.method, req.params)
+                   │          │     │   │       │   └ {'name': 'get_db_sleeptery', 'arguments': {}, '_meta': {'progressToken': 8}}
+                   │          │     │   │       └ JSONRPCRequest(jsonrpc='2.0', id=8, method='tools/call', params={'name': 'get_db_sleeptery', 'arguments': {}, '_meta': {'prog...
+                   │          │     │   └ 'tools/call'
+                   │          │     └ JSONRPCRequest(jsonrpc='2.0', id=8, method='tools/call', params={'name': 'get_db_sleeptery', 'arguments': {}, '_meta': {'prog...
+                   │          └ _JSONRPCDispatchContext(transport=TransportContext(kind='jsonrpc', can_send_request=True, headers=None), _dispatcher=<mcp.sha...
+                   └ <function _serve_legacy_stream.<locals>.on_request at 0x10e028f40>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/server/runner.py", line 747, in on_request
+    return await runner.on_request(dctx, method, params)
+                 │      │          │     │       └ {'name': 'get_db_sleeptery', 'arguments': {}, '_meta': {'progressToken': 8}}
+                 │      │          │     └ 'tools/call'
+                 │      │          └ _JSONRPCDispatchContext(transport=TransportContext(kind='jsonrpc', can_send_request=True, headers=None), _dispatcher=<mcp.sha...
+                 │      └ <bound method ServerRunner._on_request of ServerRunner(server=<mcp.server.lowlevel.server.Server object at 0x10c5478f0>, conn...
+                 └ ServerRunner(server=<mcp.server.lowlevel.server.Server object at 0x10c5478f0>, connection=<mcp.server.connection.Connection o...
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/server/runner.py", line 230, in _on_request
+    result = _dump_result(await call(ctx))
+             │                  │    └ ServerRequestContext(session=<mcp.server.session.ServerSession object at 0x10dfb7080>, lifespan_context={}, protocol_version=...
+             │                  └ functools.partial(<function _apply_middleware at 0x10bd451c0>, <mcp.server._otel.OpenTelemetryMiddleware object at 0x10c5479e...
+             └ <function _dump_result at 0x10bd45080>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/server/_otel.py", line 44, in __call__
+    result = await call_next(ctx)
+                   │         └ ServerRequestContext(session=<mcp.server.session.ServerSession object at 0x10dfb7080>, lifespan_context={}, protocol_version=...
+                   └ functools.partial(<function _apply_middleware at 0x10bd451c0>, <mcp.server.request_state.RequestStateBoundary object at 0x10c...
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/server/request_state.py", line 361, in __call__
+    result = await call_next(ctx)
+                   │         └ ServerRequestContext(session=<mcp.server.session.ServerSession object at 0x10dfb7080>, lifespan_context={}, protocol_version=...
+                   └ <function ServerRunner._on_request.<locals>._inner at 0x10df839c0>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/server/runner.py", line 217, in _inner
+    result = await entry.handler(ctx, typed_params)
+                   │     │       │    └ CallToolRequestParams(meta={'progress_token': 8}, input_responses=None, request_state=None, name='get_db_sleeptery', argument...
+                   │     │       └ ServerRequestContext(session=<mcp.server.session.ServerSession object at 0x10dfb7080>, lifespan_context={}, protocol_version=...
+                   │     └ <member 'handler' of 'HandlerEntry' objects>
+                   └ HandlerEntry(params_type=<class 'mcp_types._types.CallToolRequestParams'>, handler=<bound method MCPServer._handle_call_tool ...
+> File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/server/mcpserver/server.py", line 442, in _handle_call_tool
+    return await self.call_tool(params.name, params.arguments or {}, context)
+                 │    │         │      │     │      │                └ Context()
+                 │    │         │      │     │      └ {}
+                 │    │         │      │     └ CallToolRequestParams(meta={'progress_token': 8}, input_responses=None, request_state=None, name='get_db_sleeptery', argument...
+                 │    │         │      └ 'get_db_sleeptery'
+                 │    │         └ CallToolRequestParams(meta={'progress_token': 8}, input_responses=None, request_state=None, name='get_db_sleeptery', argument...
+                 │    └ <function MCPServer.call_tool at 0x10c27ed40>
+                 └ <mcp.server.mcpserver.server.MCPServer object at 0x10c4322d0>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/server/mcpserver/server.py", line 548, in call_tool
+    return await self._tool_manager.call_tool(name, arguments, context, convert_result=True)
+                 │    │             │         │     │          └ Context()
+                 │    │             │         │     └ {}
+                 │    │             │         └ 'get_db_sleeptery'
+                 │    │             └ <function ToolManager.call_tool at 0x10c1fe980>
+                 │    └ <mcp.server.mcpserver.tools.tool_manager.ToolManager object at 0x10b81c3b0>
+                 └ <mcp.server.mcpserver.server.MCPServer object at 0x10c4322d0>
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/server/mcpserver/tools/tool_manager.py", line 87, in call_tool
+    return await tool.run(arguments, context, convert_result=convert_result)
+                 │    │   │          │                       └ True
+                 │    │   │          └ Context()
+                 │    │   └ {}
+                 │    └ <function Tool.run at 0x10c1fe7a0>
+                 └ Tool(fn=<function StPostgreSQLMCP._register_tools.<locals>.get_db_sleeptery at 0x10df82b60>, name='get_db_sleeptery', title=N...
+  File "/Applications/xdev/mcp/.venv/lib/python3.12/site-packages/mcp/server/mcpserver/tools/base.py", line 213, in run
+    raise UnexpectedToolError(f"Error executing tool {self.name}") from exc
+          │                                           │    └ 'get_db_sleeptery'
+          │                                           └ Tool(fn=<function StPostgreSQLMCP._register_tools.<locals>.get_db_sleeptery at 0x10df82b60>, name='get_db_sleeptery', title=N...
+          └ <class 'mcp.server.mcpserver.exceptions.UnexpectedToolError'>
+
+mcp.server.mcpserver.exceptions.UnexpectedToolError: Error executing tool get_db_sleeptery
+2026-11-23 17:58:24.947 | INFO | Connected to database postgresql+asyncpg://readonly_user:********@127.0.0.1:15432/st_sleep
+2026-11-23 17:58:24.951 | DEBUG | Query:                  SELECT datname AS database_name                 FROM pg_database                 WHERE datistemplate = false                     AND has_database_privilege(datname, 'CONNECT')                     AND datallowconn = true                     AND datname LIKE 'st_%'                 ORDER BY datname;              Args: ()
+2026-11-23 17:58:25.000 | SUCCESS | Доступные базы данных: ['st_account_manager', 'st_auth', 'st_business', 'st_devices', 'st_diary', 'st_experience', 'st_health', 'st_library', 'st_persons', 'st_pillows', 'st_postgres', 'st_raffles', 'st_referral', 'st_scheduler', 'st_sleep', 'st_subscription', 'st_tournaments']
+2026-11-23 17:58:25.049 | INFO | Disconnected from database postgresql+asyncpg://readonly_user:********@127.0.0.1:15432/st_sleep
+2026-11-23 17:58:35.100 | INFO | Connected to database postgresql+asyncpg://readonly_user:********@127.0.0.1:15432/st_tournaments
+2026-11-23 17:58:35.101 | DEBUG | Query:                  SELECT                     table_name                 FROM information_schema.tables                 WHERE table_schema = 'public'                     AND table_name NOT LIKE '%yoyo%'                 ORDER BY table_name;              Args: ()
+2026-11-23 17:58:35.157 | SUCCESS | Доступные таблицы в базе st_tournaments: ['corporate_leagues', 'corporate_rating', 'corporate_tournaments', 'corporate_tournaments_overlays', 'corporate_tournaments_participants', 'regular_leagues', 'regular_tournaments', 'regular_tournaments_overlays', 'regular_tournaments_participants', 'user_rating']
+2026-11-23 17:58:35.208 | INFO | Disconnected from database postgresql+asyncpg://readonly_user:********@127.0.0.1:15432/st_tournaments

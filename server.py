@@ -10,7 +10,7 @@ server = MCPServer("Sleeptery AI MCP server")
 # Регистрируем модули
 StSleepMCP(server)
 StDiaryMCP(server)
-# StAccountManagerMCP(server)
+StPostgreSQLMCP(server)
 
 
 async def log_registered_tools():
