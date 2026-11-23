@@ -19,6 +19,9 @@ class Config(BaseSettings):
         description="URL PostgreSQL для инструментов ИИ",
         validation_alias='DB_AI_URL',
     )
+    PROD_IP: str = Field(..., validation_alias='PROD_IP')
+    SSH_KEY_PATH: str = Field(..., validation_alias='SSH_KEY_PATH')
+    
 
     model_config = SettingsConfigDict(env_file='.env', env_file_encoding='utf-8', extra='ignore')
 
