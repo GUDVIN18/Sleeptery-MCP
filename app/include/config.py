@@ -5,6 +5,7 @@ from pydantic import Field
 class Config(BaseSettings):
     DOCKER_SECRET: str = Field(validation_alias='DOCKER_SECRET')
     LOG_LEVEL: str = Field(validation_alias='LOG_LEVEL')
+    MCP_API_TOKEN: str = Field(validation_alias='MCP_API_TOKEN')
 
     # URLS
     ST_SLEEP_URL: str = Field(validation_alias='ST_SLEEP_URL')

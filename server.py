@@ -1,4 +1,8 @@
+import os
 import asyncio
+from mcp.server.auth.provider import TokenVerifier, AccessToken
+from mcp.server.auth.settings import AuthSettings
+from pydantic import AnyHttpUrl
 from mcp.server import MCPServer
 from app.include.logging_config import logger as log
 from app.integrations import *
@@ -6,8 +10,28 @@ from sshtunnel import SSHTunnelForwarder
 from sqlalchemy.engine import make_url
 from app.include.config import config
 
+
 # Создаём главный MCP сервер
-server = MCPServer("Sleeptery AI MCP server")
+class TokenAuth(TokenVerifier):
+    async def verify_token(self, token: str):
+        if token != config.MCP_API_TOKEN:
+            return None
+        return AccessToken(
+            token=token,
+            client_id="sleeptery",
+            scopes=[],
+        )
+
+server = MCPServer(
+    "Sleeptery AI MCP server",
+    token_verifier=TokenAuth(),
+    auth=AuthSettings(
+        issuer_url=AnyHttpUrl("https://mcp.sleeptery.ru"),
+        resource_server_url=AnyHttpUrl("https://mcp.sleeptery.ru/mcp"),
+        required_scopes=["mcp:access"],
+        validate_token_resource=True,
+    ),
+)
 
 # Регистрируем модули
 StSleepMCP(server)
