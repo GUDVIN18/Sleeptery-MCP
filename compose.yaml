@@ -9,6 +9,7 @@ services:
       MCP_HOST: 0.0.0.0
     volumes:
       - mcp_logs:/app/app/logs
+      - /root/.ssh/id_ed25519:/run/secrets/ssh_key:ro
     restart: always
 
 volumes:
