@@ -19,7 +19,8 @@ class TokenAuth(TokenVerifier):
         return AccessToken(
             token=token,
             client_id="sleeptery",
-            scopes=[],
+            scopes=["mcp:access"],
+            resource="https://mcp.sleeptery.ru/mcp",
         )
 
 server = MCPServer(
